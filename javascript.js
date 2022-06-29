@@ -1,4 +1,23 @@
 const gridContainer = document.querySelector("#gridContainer");
+const btnGridSize = document.querySelector("#btnGridSize");
+btnGridSize.addEventListener("click", checkUserGridSize);
+
+function checkUserGridSize()  {
+    var selGridSize;
+    selGridSize = prompt("Select your desired grid size", "16");
+    if (isNaN(parseInt(selGridSize))) {
+        checkUserGridSize();
+    } else {
+        if (parseInt(selGridSize) > 100 || parseInt(selGridSize) < 1 ) {
+            checkUserGridSize();
+        } else {
+        gridContainer.innerHTML = "";
+        createGrid(parseInt(selGridSize));
+        }
+    }
+}
+
+
 
 createGrid(8);
 
